@@ -12,7 +12,16 @@ eventListeners();
 
 function eventListeners(){ // Tüm event listenerler
     form.addEventListener("submit",addTodo);
+    document.addEventListener("DOMContentLoaded", loadAllTodosToUI);
 
+}
+
+function loadAllTodosToUI(){
+    let todos = getTodosFromStorage();
+
+    todos.forEach(function(todo){
+        addTodoToUI(todo);
+    })
 }
 function addTodo(e){
     const newTodo = todoInput.value.trim(); // trim basindaki ve sonundaki bosluklari siler.
