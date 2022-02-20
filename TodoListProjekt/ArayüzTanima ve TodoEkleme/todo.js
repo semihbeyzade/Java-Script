@@ -18,16 +18,13 @@ function addTodo(e){
     const newTodo = todoInput.value.trim(); // trim basindaki ve sonundaki bosluklari siler.
 
     if(newTodo === ""){
-        /*
-         <div class="alert alert-danger" role="alert">
-                        <strong>Oh snap!</strong> Change a few things up and try submitting again.
-         </div>
-        */
+      
        showAlert("danger","Lütfen bir todo girin...");
     }
     else{
 
         addTodoToUI(newTodo);
+        addTodoToStorage(newTodo);
         showAlert("success","Todo basariyla eklendi...")
 
     }
@@ -37,6 +34,25 @@ function addTodo(e){
 
 
    e.preventDefault();
+}
+
+function getTodosFromStorage(){ // Storagedan Todolari Alma
+    let todos;
+if(localStorage.getItem("todos") === null){
+    todos = [];
+}
+else{
+    todos = JSON.parse(localStorage.getItem("todos"));
+}
+return todos;
+
+}
+
+function addTodoToStorage(newTodo){
+  let todos = getTodosFromStorage();
+todos.push(newTodo)
+localStorage.setItem("todos", JSON.stringify(todos));
+
 }
 
 function showAlert(type,message){
