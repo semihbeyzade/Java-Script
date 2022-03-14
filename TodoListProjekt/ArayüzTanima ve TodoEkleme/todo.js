@@ -107,10 +107,10 @@ function addTodo(e){
 function getTodosFromStorage(){ // Storagedan Todolari Alma
     let todos;
 if(localStorage.getItem("todos") === null){
-    todos = [];
+   todos = [];
 }
 else{
-    todos = JSON.parse(localStorage.getItem("todos"));
+   todos = JSON.parse(localStorage.getItem("todos"));
 }
 return todos;
 
@@ -187,6 +187,5 @@ listItem.appendChild(link);
 
 todoList.appendChild(listItem);
 todoInput.value = "";
-
 
 }
