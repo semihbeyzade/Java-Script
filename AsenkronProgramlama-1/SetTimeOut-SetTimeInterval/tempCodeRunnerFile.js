@@ -1,5 +1,5 @@
 let i = 0;
-setInterval(() => {
+let value = setInterval(() => {
     i++;
     console.log("saydir", i);
     
